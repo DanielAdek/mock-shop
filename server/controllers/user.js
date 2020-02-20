@@ -85,7 +85,7 @@ export default class Users {
 
       const token = Utils.generateToken('8760h', { id: user.id });
 
-      return res.status(201).jsend.success(successResponse('Login Successful', 200, 'login', {
+      return res.status(200).jsend.success(successResponse('Login Successful', 200, 'login', {
         error: false, operationStatus: 'Operation Successful!', user, token
       }));
     } catch (error) {
