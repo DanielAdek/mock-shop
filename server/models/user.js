@@ -26,17 +26,16 @@ const users = (sequelize, DataTypes) => {
       type: DataTypes.BOOLEAN
     },
     avatar: {
-      type: DataTypes.STRING,
-      allowNull: false
+      type: DataTypes.STRING
     }
   });
 
   Users.associate = (models) => {
-    Users.hasMany(models.Products, {
+    Users.hasMany(models.Product, {
       foreignKey: 'userId',
       as: 'products'
     });
-    Users.hasMany(models.Carts, {
+    Users.hasMany(models.Cart, {
       foreignKey: 'userId',
       as: 'cart'
     });

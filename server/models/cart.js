@@ -11,11 +11,11 @@ const carts = (sequelize, DataTypes) => {
   });
 
   Cart.associate = (models) => {
-    Cart.belongsTo(models.Users, {
+    Cart.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
     });
-    Cart.belongsTo(models.Users, {
+    Cart.belongsTo(models.Product, {
       foreignKey: 'productId',
       onDelete: 'CASCADE'
     });
