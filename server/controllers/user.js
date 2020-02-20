@@ -1,4 +1,3 @@
-import { Op } from 'sequelize';
 import { Form } from 'form-my-simple-validation';
 import Utils from '../utils/helpers';
 import formSchema from '../utils/validation';
