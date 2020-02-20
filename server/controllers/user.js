@@ -44,9 +44,49 @@ export default class Users {
 
       const user = await Services.insertToDataBase(User, data);
 
-      const token = Utils.generateToken('8760h', { id: user._id });
+      const token = Utils.generateToken('8760h', { id: user.id });
 
       return res.status(201).jsend.success(successResponse('Account created!', 201, 'Create User Account', {
+        error: false, operationStatus: 'Operation Successful!', user, token
+      }));
+    } catch (error) {
+      const result = errorResponse(`${error.syscall || error.name || 'ServerError'}`, 500, `${error.path || 'No Field'}`, 'create User', `${error.message}`, { error: true, operationStatus: 'Proccess Terminated!', errorSpec: error });
+      return res.status(500).jsend.fail(result);
+    }
+  }
+
+  /**
+   * @method create
+   * @param {object} req The request object
+   * @param {object} res The response object
+   * @return {*} json
+   */
+  static async login(req, res) {
+    try {
+      const { email, password } = req.body;
+
+      // validate form fields
+      const validationResult = Form.validateFields('authenticate', formSchema, req.body);
+
+      if (validationResult.error) {
+        return res.status(400).jsend.fail(validationResult);
+      }
+
+      const user = await Services.retreiveOneData(User, { email });
+
+      if (!user) {
+        return res.status(409).jsend.fail(errorResponse('IdentificatonError', 400, 'email', 'login', 'Email not found exist', { error: true, operationStatus: 'Processs Terminated!' }));
+      }
+
+      // confirm password is correct
+      const passwordMatch = User.comparePassword(password, user);
+      if (!passwordMatch) {
+        return res.status(409).jsend.fail(errorResponse('IdentificatonError', 400, 'password', 'login', 'password incorrect', { error: true, operationStatus: 'Processs Terminated!', passwordMatch }));
+      }
+
+      const token = Utils.generateToken('8760h', { id: user.id });
+
+      return res.status(201).jsend.success(successResponse('Login Successful', 200, 'login', {
         error: false, operationStatus: 'Operation Successful!', user, token
       }));
     } catch (error) {
