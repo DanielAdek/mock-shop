@@ -21,11 +21,11 @@ const products = (sequelize, DataTypes) => {
   });
 
   Product.associate = (models) => {
-    Product.belongsTo(models.Users, {
+    Product.belongsTo(models.User, {
       foreignKey: 'userId',
       onDelete: 'CASCADE'
     });
-    Product.hasMany(models.Carts, {
+    Product.hasMany(models.Cart, {
       foreignKey: 'productId',
       as: 'carts'
     });

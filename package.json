@@ -10,6 +10,7 @@
     "pretest": "NODE_ENV=test sequelize db:migrate && NODE_ENV=test sequelize db:seed:all",
     "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
     "start": "babel-node server/app",
+    "set-module": "babel-node module.config.js",
     "start:dev": "nodemon --exec babel-node server/app",
     "test": "NODE_ENV=test nyc mocha test/**.spec.js --require babel-core/register --exit",
     "test:dev": "npm run posttest && npm test",
@@ -25,10 +26,10 @@
     "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
-    "gravatar": "^1.8.0",
+    "form-my-simple-validation": "^0.0.11",
     "jsend": "^1.1.0",
     "jsonwebtoken": "^8.5.1",
-    "nodemon": "^2.0.2",
+    "module-alias": "^2.2.2",
     "pg": "^7.18.1",
     "pg-hstore": "^2.3.3",
     "sequelize": "^5.21.4",
@@ -43,6 +44,7 @@
     "eslint-config-airbnb-base": "^14.0.0",
     "eslint-plugin-import": "^2.20.1",
     "mocha": "^7.0.1",
+    "nodemon": "^2.0.2",
     "nyc": "^15.0.0"
   }
 }
