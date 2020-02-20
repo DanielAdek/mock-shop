@@ -6,6 +6,17 @@
   "author": "DanielAdek <maildaniel.me1@gmail.com>",
   "license": "MIT",
   "private": false,
+  "scripts": {
+    "pretest": "NODE_ENV=test sequelize db:migrate && NODE_ENV=test sequelize db:seed:all",
+    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
+    "start": "babel-node server/app",
+    "start:dev": "nodemon --exec babel-node server/app",
+    "test": "NODE_ENV=test nyc mocha test/**.spec.js --require babel-core/register --exit",
+    "test:dev": "npm run posttest && npm test",
+    "migrate": "sequelize db:migrate",
+    "unmigrate": "sequelize db:migrate:undo:all",
+    "heroku-postbuild": "npm run migrate"
+  },
   "dependencies": {
     "babel-cli": "^6.26.0",
     "babel-preset-env": "^1.7.0",
