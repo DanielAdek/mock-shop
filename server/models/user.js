@@ -44,7 +44,7 @@ const users = (sequelize, DataTypes) => {
   Users.beforeValidate((user) => {
     user.password = user.password ? bcrypt.hashSync(user.password, 8) : null;
   });
-  Users.comparePassword = (password, user) => bcrypt.compareSync(password, user);
+  Users.comparePassword = (password, self) => bcrypt.compareSync(password, self.password);
   return Users;
 };
 
