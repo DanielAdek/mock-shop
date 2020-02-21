@@ -16,7 +16,7 @@
     "migrate": "sequelize db:migrate",
     "seed": "sequelize db:seed:all",
     "unmigrate": "sequelize db:migrate:undo:all",
-    "heroku-postbuild": "npm run migrate"
+    "heroku-postbuild": "npm run migrate && npm run start"
   },
   "dependencies": {
     "@babel/cli": "^7.8.4",
