@@ -1,0 +1,50 @@
+{
+  "name": "mock-shop",
+  "version": "1.0.0",
+  "main": "app.js",
+  "repository": "https://github.com/DanielAdek/mock-shop.git",
+  "author": "DanielAdek <maildaniel.me1@gmail.com>",
+  "license": "MIT",
+  "private": false,
+  "scripts": {
+    "pretest": "NODE_ENV=test sequelize db:migrate && NODE_ENV=test sequelize db:seed:all",
+    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
+    "start": "babel-node server/app",
+    "set-module": "babel-node module.config.js",
+    "start:dev": "nodemon --exec babel-node server/app",
+    "test": "NODE_ENV=test nyc mocha test/**.spec.js --require babel-core/register --exit",
+    "test:dev": "npm run posttest && npm test",
+    "migrate": "sequelize db:migrate",
+    "unmigrate": "sequelize db:migrate:undo:all",
+    "heroku-postbuild": "npm run migrate"
+  },
+  "dependencies": {
+    "babel-cli": "^6.26.0",
+    "babel-preset-env": "^1.7.0",
+    "bcrypt": "^3.0.8",
+    "body-parser": "^1.19.0",
+    "cors": "^2.8.5",
+    "dotenv": "^8.2.0",
+    "express": "^4.17.1",
+    "form-my-simple-validation": "^0.0.11",
+    "jsend": "^1.1.0",
+    "jsonwebtoken": "^8.5.1",
+    "module-alias": "^2.2.2",
+    "pg": "^7.18.1",
+    "pg-hstore": "^2.3.3",
+    "sequelize": "^5.21.4",
+    "sequelize-cli": "^5.5.1"
+  },
+  "devDependencies": {
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
+    "coveralls": "^3.0.9",
+    "eslint": "^6.8.0",
+    "eslint-config-airbnb": "^18.0.1",
+    "eslint-config-airbnb-base": "^14.0.0",
+    "eslint-plugin-import": "^2.20.1",
+    "mocha": "^7.0.1",
+    "nodemon": "^2.0.2",
+    "nyc": "^15.0.0"
+  }
+}
