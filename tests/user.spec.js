@@ -76,7 +76,7 @@ describe('LOGIN API', () => {
     chai.request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'maildaniel.me1@gmail.com',
+        email: 'admin@gmail.com',
         password: 'password'
       })
       .end((_, res) => {
@@ -133,7 +133,7 @@ describe('LOGIN API', () => {
     chai.request(app)
       .post('/api/v1/users/login')
       .send({
-        email: 'maildaniel.me1@gmail.com',
+        email: 'admin@gmail.com',
         password: 'fake-password'
       })
       .end((_, res) => {

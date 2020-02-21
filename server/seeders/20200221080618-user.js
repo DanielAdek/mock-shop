@@ -2,10 +2,10 @@ const bcrypt = require('bcrypt');
 
 module.exports = {
   up: (queryInterface) => queryInterface.bulkInsert('Users', [{
-    userName: 'DanielAdek',
+    userName: 'Admin',
     firstName: 'Daniel',
     lastName: 'Adekunle',
-    email: 'maildaniel.me1@gmail.com',
+    email: 'admin@gmail.com',
     password: bcrypt.hashSync('password', 8),
     isAdmin: true,
     createdAt: '2020-02-20',
@@ -15,7 +15,7 @@ module.exports = {
     userName: 'postman',
     firstName: 'Daniel',
     lastName: 'Adekunle',
-    email: 'maildaniel.me2@gmail.com',
+    email: 'daniel.adek.k@gmail.com',
     password: bcrypt.hashSync('password', 8),
     isAdmin: false,
     createdAt: '2020-02-20',

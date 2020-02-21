@@ -3,8 +3,10 @@ import bodyParser from 'body-parser';
 import cors from 'cors';
 import jsend from 'jsend';
 import { config } from 'dotenv';
+import swaggerUi from 'swagger-ui-express';
 
 import routes from './routes';
+import swaggerDocument from '../swagger.json';
 import { errorResponse, successResponse } from './utils/response';
 
 config();
@@ -20,6 +22,9 @@ app.set('port', port);
  APP USE CORS
 ============= */
 app.use(cors());
+
+// USE SWAGGER DOCUMENTATION
+app.use('/api-docs', swaggerUi.serve, swaggerUi.setup(swaggerDocument));
 
 /* = ==============
   SET BODY PARSER
