@@ -33,7 +33,7 @@ export default class Users {
       const report = await Services.reportDuplicate(User, { email });
 
       if (report === 'negative') {
-        return res.status(409).jsend.fail(errorResponse('DuplicateError', 400, 'email', 'Create User Account', 'Email already exist', { error: true, operationStatus: 'Processs Terminated!' }));
+        return res.status(409).jsend.fail(errorResponse('DuplicateError', 409, 'email', 'Create User Account', 'Email already exist', { error: true, operationStatus: 'Processs Terminated!' }));
       }
 
       // Create customer account
@@ -74,7 +74,7 @@ export default class Users {
       const user = await Services.retreiveOneData(User, { email });
 
       if (!user) {
-        return res.status(409).jsend.fail(errorResponse('IdentificatonError', 400, 'email', 'login', 'Email not found exist', { error: true, operationStatus: 'Processs Terminated!' }));
+        return res.status(409).jsend.fail(errorResponse('IdentificatonError', 409, 'email', 'login', 'Email not found', { error: true, operationStatus: 'Processs Terminated!' }));
       }
 
       // confirm password is correct

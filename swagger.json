@@ -1,0 +1,422 @@
+{
+  "swagger": "2.0",
+  "info": {
+    "description": "A mock shop where users can shop",
+    "version": "1.0.0",
+    "title": "Mock Shop",
+    "contact": {
+      "email": "daniel.adek.k@gmail.com"
+    },
+    "license": {
+      "name": "Apache 2.0",
+      "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+    }
+  },
+  "host": "localhost:8081",
+  "basePath": "/api/v1",
+  "tags": [
+    {
+      "name": "Users",
+      "description": "Everything about all Users"
+    },
+    {
+      "name": "Products",
+      "description": "Everything about all Products"
+    },
+    {
+      "name": "Carts",
+      "description": "Everything about all Carts"
+    }
+  ],
+  "schemes": [
+    "http",
+    "https"
+  ],
+  "paths": {
+    "/users/register": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Register user account",
+        "description": "",
+        "operationId": "addUser",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that need to be added to user table",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/register"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Account Created"
+          }
+        }
+      }
+    },
+    "/users/login": {
+      "post": {
+        "tags": [
+          "Users"
+        ],
+        "summary": "Login user",
+        "description": "",
+        "operationId": "authenticate",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "body",
+            "name": "body",
+            "description": "User object that need to be authenticated",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/login"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Authenticated"
+          }
+        }
+      }
+    },
+    "/product/create": {
+      "post": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Create Product",
+        "description": "",
+        "operationId": "addProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Bearer token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Product object that need to be added to product table",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/product_create"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Product Created"
+          }
+        }
+      }
+    },
+    "/product/{productId}": {
+      "put": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Edit Product",
+        "description": "",
+        "operationId": "editProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Bearer token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "productId",
+            "description": "params",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/params"
+            }
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Product object that need to be edited",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/product_create"
+            }
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          }
+        }
+      },
+      "delete": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "delete Product",
+        "description": "",
+        "operationId": "deleteProduct",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Bearer token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "productId",
+            "description": "params",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/params"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Product Created"
+          }
+        }
+      }
+    },
+    "/product": {
+      "get": {
+        "tags": [
+          "Products"
+        ],
+        "summary": "Finds Products",
+        "description": "Muliple Products to be deplayed",
+        "operationId": "retrieveProducts",
+        "produces": [
+          "application/json"
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          }
+        }
+      }
+    },
+    "/cart/add": {
+      "post": {
+        "tags": [
+          "Carts"
+        ],
+        "summary": "add Product to cart",
+        "description": "",
+        "operationId": "addCart",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Bearer token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "body",
+            "name": "body",
+            "description": "Product object that need to be added to cart table",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/cart_create"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Product Created"
+          }
+        }
+      }
+    },
+    "/cart/{cartId}": {
+      "delete": {
+        "tags": [
+          "Carts"
+        ],
+        "summary": "delete cart",
+        "description": "",
+        "operationId": "deleteCart",
+        "consumes": [
+          "application/json"
+        ],
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Bearer token",
+            "required": true,
+            "type": "string"
+          },
+          {
+            "in": "path",
+            "name": "cartId",
+            "description": "params",
+            "required": true,
+            "schema": {
+              "$ref": "#/definitions/params"
+            }
+          }
+        ],
+        "responses": {
+          "201": {
+            "description": "Cart Deleted"
+          }
+        }
+      }
+    },
+    "/cart/all": {
+      "get": {
+        "tags": [
+          "Carts"
+        ],
+        "summary": "Finds Products",
+        "description": "Muliple Cart to be deplayed",
+        "operationId": "retrieveCarts",
+        "produces": [
+          "application/json"
+        ],
+        "parameters": [
+          {
+            "in": "header",
+            "name": "authorization",
+            "description": "Bearer token",
+            "required": true,
+            "type": "string"
+          }
+        ],
+        "responses": {
+          "200": {
+            "description": "Operation Successful"
+          }
+        }
+      }
+    }
+  },
+  "definitions": {
+    "params": {
+      "type": "number",
+      "example": 1
+    },
+    "register": {
+      "type": "object",
+      "properties": {
+        "userName": {
+          "type": "string",
+          "example": "John Doe"
+        },
+        "firstName": {
+          "type": "string",
+          "example": "John"
+        },
+        "lastName": {
+          "type": "string",
+          "example": "Doe"
+        },
+        "email": {
+          "type": "string",
+          "example": "johndoe@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password"
+        }
+      }
+    },
+    "login": {
+      "type": "object",
+      "properties": {
+        "email": {
+          "type": "string",
+          "example": "johndoe@gmail.com"
+        },
+        "password": {
+          "type": "string",
+          "example": "password"
+        }
+      }
+    },
+    "product_create": {
+      "type": "object",
+      "properties": {
+        "item": {
+          "type": "string",
+          "example": "Versace"
+        },
+        "description": {
+          "type": "string",
+          "example": "White T-shirt, round neck short ware"
+        },
+        "category": {
+          "type": "string",
+          "example": "Fashion"
+        },
+        "productImage": {
+          "type": "string",
+          "example": "https://res.cloudinary.com/dbsxxymfz/image/upload/v1536757459/dummy-profile.png"
+        }
+      }
+    },
+    "cart_create": {
+      "type": "object",
+      "properties": {
+        "productId": {
+          "type": "number",
+          "example": 1
+        }
+      }
+    }
+  }
+}

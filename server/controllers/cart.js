@@ -4,7 +4,7 @@ import { errorResponse, successResponse } from '../utils/response';
 import * as Services from '../services';
 import db from '../models';
 
-const { Cart, Product, User } = db;
+const { Cart, Product } = db;
 /**
  * @class
  */
@@ -40,7 +40,7 @@ export default class CartClass {
 
       const cart = await Services.insertToDataBase(Cart, data);
 
-      return res.status(200).jsend.success(successResponse('Product added to Cart!', 200, 'add to cart', {
+      return res.status(201).jsend.success(successResponse('Product added to Cart!', 201, 'add to cart', {
         error: false, operationStatus: 'Operation Successful!', cart
       }));
     } catch (error) {

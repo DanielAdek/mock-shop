@@ -1,11 +1,10 @@
 import { Form } from 'form-my-simple-validation';
-import Utils from '../utils/helpers';
 import formSchema from '../utils/validation';
 import { errorResponse, successResponse } from '../utils/response';
 import * as Services from '../services';
 import db from '../models';
 
-const { Product, User } = db;
+const { Product } = db;
 /**
  * @class
  */
@@ -45,7 +44,7 @@ export default class ProductClass {
 
       const product = await Services.insertToDataBase(Product, data);
 
-      return res.status(200).jsend.success(successResponse('Product created!', 200, 'Create Product', {
+      return res.status(201).jsend.success(successResponse('Product created!', 201, 'Create Product', {
         error: false, operationStatus: 'Operation Successful!', product
       }));
     } catch (error) {
@@ -94,10 +93,10 @@ export default class ProductClass {
         imageUrl: productImage.trim() || product.imageUrl
       };
 
-      const modified = await Services.modifyData(Product, data, { id });
+      await Services.modifyData(Product, data, { id });
 
       return res.status(200).jsend.success(successResponse('Product Edited Successfully', 200, 'edit product', {
-        error: false, operationStatus: 'Operation Successful!', product: modified
+        error: false, operationStatus: 'Operation Successful!'
       }));
     } catch (error) {
       const result = errorResponse(`${error.syscall || error.name || 'ServerError'}`, 500, `${error.path || 'No Field'}`, 'edit product', `${error.message}`, { error: true, operationStatus: 'Proccess Terminated!', errorSpec: error });
