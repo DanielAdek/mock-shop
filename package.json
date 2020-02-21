@@ -14,7 +14,7 @@
     "test": "NODE_ENV=test nyc mocha tests/**.spec.js --require @babel/register --exit",
     "test:dev": "npm run posttest &&  npm test",
     "migrate": "sequelize db:migrate",
-    "seed": "sequelize db:seed:all",
+    "seed": "sequelize db:seed:all --debug",
     "unmigrate": "sequelize db:migrate:undo:all",
     "heroku-postbuild": "npm run migrate"
   },
