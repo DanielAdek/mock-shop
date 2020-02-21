@@ -1,16 +1,11 @@
-[![Build Status](https://travis-ci.com/DanielAdek/mock-shop.svg?branch=master)](https://travis-ci.com/DanielAdek/mock-shop)
-
 ### API documentation
 [Mock Shop API Documentation](<https://dmockshop.herokuapp.com/api-docs>)
 
 # Backend Developer Application Challenge
 
-**Mock Shop** is a simple shopping server. You are required to develop the backend API. 
-You can fork this git repository and get to work!
+**Mock Shop** is a shopping server.
 
-**Due Date:** 6 days after Test email receipt (Usually places due date on Friday, at noon).
-
-## Features
+## Features Required
 
 - User can Sign Up.
 - User can Sign in.
