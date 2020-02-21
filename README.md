@@ -1,7 +1,7 @@
 [![Build Status](https://travis-ci.com/DanielAdek/mock-shop.svg?branch=master)](https://travis-ci.com/DanielAdek/mock-shop)
 
 ### API documentation
-[Mock-shop swagger-docs]("https://danielmockshop.herokuapp.com/api-docs)
+[Mock-shop swagger-docs]("https://dmockshop.herokuapp.com/api-docs)
 
 # Backend Developer Application Challenge
 
