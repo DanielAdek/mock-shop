@@ -121,14 +121,16 @@ export default class ProductClass {
 
       const { productId: id } = req.params;
 
-      const product = await Services.expungeData(Product, { id });
+      const product = await Services.retreiveOneData(Product, { id });
 
       if (!product) {
-        return res.status(409).jsend.fail(errorResponse('IdentificatonError', 400, '', 'delete product', 'product does not exist', { error: true, operationStatus: 'Processs Terminated!' }));
+        return res.status(400).jsend.fail(errorResponse('NotFound', 400, '', 'delete product', 'product does not exist', { error: true, operationStatus: 'Processs Terminated!' }));
       }
 
+      await Services.expungeData(Product, { id });
+
       return res.status(200).jsend.success(successResponse('Product Deleted!', 204, 'delete product', {
-        error: false, operationStatus: 'Operation Successful!', product
+        error: false, operationStatus: 'Operation Successful!',
       }));
     } catch (error) {
       const result = errorResponse(`${error.syscall || error.name || 'ServerError'}`, 500, `${error.path || 'No Field'}`, 'delete product', `${error.message}`, { error: true, operationStatus: 'Proccess Terminated!', errorSpec: error });

@@ -62,3 +62,17 @@ export const modifyData = async (database, data, filter) => {
   const result = await database.update(data, { where: filter });
   return result;
 };
+
+/**
+ * @method retrieveCart
+ * @param {object} database database to give
+ * @param {object} data request data to filter with
+ * @param {object} dbTable database to fetch other info
+ * @return {*} object
+ */
+export const retrieveCarts = async (database, data, dbTable) => {
+  const include = [{ model: dbTable, as: 'Product', attributes: ['item', 'description', 'category', 'imageUrl'] }];
+  const order = [['createdAt', 'DESC']];
+  const result = await database.findAll({ include, order, where: data });
+  return result;
+};

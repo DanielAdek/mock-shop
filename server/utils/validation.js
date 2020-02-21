@@ -31,4 +31,8 @@ export default {
     c: { field: 'category', isName: true },
     d: { field: 'productImage' },
   },
+  addCart: {
+    formType: 'add_cart',
+    a: { field: 'productId', isInteger: true }
+  },
 };
