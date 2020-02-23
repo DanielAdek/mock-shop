@@ -1,5 +1,5 @@
 import { Form } from 'form-my-simple-validation';
-import Utils from '../utils/helpers';
+import * as Utils from '../utils/helpers';
 import formSchema from '../utils/validation';
 import { errorResponse, successResponse } from '../utils/response';
 import * as Services from '../services';

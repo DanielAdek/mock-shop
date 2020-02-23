@@ -1,12 +1,9 @@
 import chai from 'chai';
 import chaiHttp from 'chai-http';
 import app from '../server/app';
-// import Utils from '../server/utils/helpers';
 
 chai.use(chaiHttp);
 const { expect } = chai;
-
-// const token = Utils.generateToken('8760h', { id: user.id });
 
 describe('SIGNUP API', () => {
   it('should register user', (done) => {
