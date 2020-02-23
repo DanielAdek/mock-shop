@@ -7,14 +7,12 @@
   "license": "MIT",
   "private": false,
   "scripts": {
-    "pretest": "NODE_ENV=test sequelize db:migrate",
-    "posttest": "NODE_ENV=test sequelize db:migrate:undo:all",
+    "pretest": "NODE_ENV=test sequelize db:migrate && NODE_ENV=test sequelize db:seed:all",
     "start": "babel-node server/app",
     "start:dev": "nodemon --exec babel-node server/app",
     "test": "NODE_ENV=test nyc mocha tests/**.spec.js --require @babel/register --exit",
     "test:dev": "npm run posttest &&  npm test",
     "migrate": "sequelize db:migrate",
-    "seed": "sequelize db:seed:all",
     "unmigrate": "sequelize db:migrate:undo:all",
     "heroku-postbuild": "npm run migrate"
   },
