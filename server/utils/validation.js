@@ -22,7 +22,7 @@ export default {
     a: { field: 'item', required: true, isName: true },
     b: { field: 'description', required: true },
     c: { field: 'category', required: true, isName: true },
-    d: { field: 'productImage', required: true },
+    // d: { field: 'productImage' },
   },
   edit: {
     formType: 'edit_product',

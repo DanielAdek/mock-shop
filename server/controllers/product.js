@@ -2,6 +2,7 @@ import { Form } from 'form-my-simple-validation';
 import formSchema from '../utils/validation';
 import { errorResponse, successResponse } from '../utils/response';
 import * as Services from '../services';
+import * as Utils from '../utils/helpers';
 import db from '../models';
 
 const { Product } = db;
@@ -34,12 +35,18 @@ export default class ProductClass {
         return res.status(400).jsend.fail(validationResult);
       }
 
-      // upload product image to cloudinary
-
+      let imageUrl = productImage;
+      // check for image exists in the request body
+      if (req.file) {
+        const file = Utils.dataUri(req);
+        // SAVES IMAGE TO CLOUDINARY
+        imageUrl = await Utils.imageUpload(file, res, req.body);
+        imageUrl = imageUrl.url;
+      }
 
       // Create product
       const data = {
-        userId: id, item, description, category, imageUrl: productImage
+        userId: id, item, description, category, imageUrl
       };
 
       const product = await Services.insertToDataBase(Product, data);
