@@ -1,5 +1,3 @@
-[![Build Status](https://travis-ci.com/DanielAdek/mock-shop.svg?branch=master)](https://travis-ci.com/DanielAdek/mock-shop) [![Coverage Status](https://coveralls.io/repos/github/DanielAdek/mock-shop/badge.svg?branch=master)](https://coveralls.io/github/DanielAdek/mock-shop?branch=master)
-
 ### API documentation
 [Mock Shop API Documentation](<https://dmockshop.herokuapp.com/api-docs>)
 
