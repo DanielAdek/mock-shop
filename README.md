@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/DanielAdek/mock-shop.svg?branch=master)](https://travis-ci.com/DanielAdek/mock-shop)
+
 ### API documentation
 [Mock Shop API Documentation](<https://dmockshop.herokuapp.com/api-docs>)
 
