@@ -120,13 +120,32 @@
             "type": "string"
           },
           {
-            "in": "body",
-            "name": "body",
-            "description": "Product object that need to be added to product table",
-            "required": true,
-            "schema": {
-              "$ref": "#/definitions/product_create"
-            }
+            "in": "formData",
+            "name": "item",
+            "type": "string",
+            "description": "Product item name",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "category",
+            "type": "string",
+            "description": "What category of product is this",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "description",
+            "type": "string",
+            "description": "Tell us something about the product",
+            "required": true
+          },
+          {
+            "in": "formData",
+            "name": "productImage",
+            "type": "file",
+            "description": "An image reflecting the content of a product",
+            "required": false
           }
         ],
         "responses": {
